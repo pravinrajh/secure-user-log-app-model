@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Denied</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); text-align: center; max-width: 500px; border-left: 5px solid #dc3545; }
+        h1 { color: #dc3545; margin-bottom: 20px; }
+        p { color: #666; margin-bottom: 10px; }
+        .user-info { background: #f8f9fa; padding: 15px; border-radius: 6px; margin: 20px 0; }
+        .btn-back { background: #6c757d; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin-top: 15px; text-decoration: none; display: inline-block; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚫 Access Denied</h1>
+        <p>You <strong>{{ user_name }}</strong> do not have access to this application.</p>
+        <div class="user-info">
+            <strong>Email:</strong> {{ user_email }}
+        </div>
+        <p><small>Allowed users: gcptrail0@gmail.com, pravinrajagcp@gmail.com, parthibank72@gmail.com</small></p>
+        <a href="/" class="btn-back">← Try Another Email</a>
+    </div>
+</body>
+</html>

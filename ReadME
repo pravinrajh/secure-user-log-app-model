@@ -1,0 +1,164 @@
+# Restricted Email Login API
+
+A lightweight Flask REST API that validates user login requests against a predefined allow-list of emails stored in SQLite.
+
+## Features
+
+- Email-based authentication with restricted access
+- SQLite database for storing allowed users
+- Simple JSON API endpoint
+- Auto-initialization of database on startup
+
+## Allowed Emails
+
+- gcptrail0@gmail.com
+- pravinrajagcp@gmail.com
+- parthibank72@gmail.com
+- prvnrajh@gmail.com
+
+## Tech Stack
+
+- **Backend**: Python 3.x, Flask
+- **Database**: SQLite
+- **Testing**: curl, Postman
+
+## Project Structure
+├── app.py # Main Flask application
+├── requirements.txt # Python dependencies
+├── users.db # SQLite database (auto-generated)
+└── README.md # Project documentation
+
+
+## Installation
+
+1. **Clone the repository**
+git clone https://github.com/<your-username>/<repo-name>.git
+cd <repo-name>
+
+
+text
+
+2. **Create virtual environment (optional)**
+python -m venv venv
+source venv/bin/activate # Linux/Mac
+venv\Scripts\activate # Windows
+
+text
+
+3. **Install dependencies**
+pip install -r requirements.txt
+
+text
+
+## Usage
+
+1. **Start the server**
+python app.py
+
+text
+Server runs on `http://127.0.0.1:5000`
+
+2. **Test the API**
+
+**Allowed email (success)**
+curl -X POST -H "Content-Type: application/json"
+-d '{"email":"prvnrajh@gmail.com"}'
+http://127.0.0.1:5000/login
+
+text
+
+Response:
+{"message": "Login allowed!", "email": "prvnrajh@gmail.com"}
+
+text
+
+**Non-allowed email (denied)**
+curl -X POST -H "Content-Type: application/json"
+-d '{"email":"test@example.com"}'
+http://127.0.0.1:5000/login
+
+text
+
+Response:
+{"message": "Access denied."}
+
+text
+
+## API Endpoints
+
+### POST /login
+
+Validates user email against the allow-list.
+
+**Request:**
+{
+"email": "user@example.com"
+}
+
+text
+
+**Response (Success - 200):**
+{
+"message": "Login allowed!",
+"email": "user@example.com"
+}
+
+text
+
+**Response (Denied - 403):**
+{
+"message": "Access denied."
+}
+
+text
+
+## Architecture
+
+Client (Postman/Browser/curl)
+↓
+Flask API (/login)
+↓
+SQLite Database (users table)
+↓
+Validate email exists
+↓
+Return JSON response
+
+text
+
+## Database Schema
+
+**Table: users**
+| Column | Type    | Description           |
+|--------|---------|----------------------|
+| id     | INTEGER | Primary key          |
+| email  | TEXT    | Unique email address |
+
+## Deployment
+
+### Local
+Already covered in Installation & Usage sections above.
+
+### Heroku (Example)
+
+1. Create `Procfile`:
+web: python app.py
+
+text
+
+2. Deploy:
+heroku create
+git push heroku master
+heroku open
+
+text
+
+## License
+
+MIT License (or your preferred license)
+
+## Author
+
+Your Name - [Your GitHub](https://github.com/your-username)
+
+This template is clean, professional, and includes all essential sections. You can copy-paste it directly into your README.md file and customize the placeholders (repo URL, author name, etc.).​

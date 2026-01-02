@@ -5,7 +5,6 @@ import json
 import sqlite3
 import logging
 
-# Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -263,8 +262,6 @@ def debug():
         'recent_activity': activity_logs,
         'session_data': dict(session)
     })
-
-# Initialize database when app starts
 initialize_database()
 
 if __name__ == '__main__':
